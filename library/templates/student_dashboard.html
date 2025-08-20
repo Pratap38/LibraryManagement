@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'studentdasboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+
+    <!-- <h2>👨‍🎓 Welcome, {{ request.user.username }}</h2> -->
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>👨‍🎓 Welcome, {{ request.user.username }}</h2>
+    <a href="{% url 'logout' %}" class="action-btn return-btn">Logout</a>
+</div>
+
+
+    <!-- Available Books Section -->
+    <div class="section">
+        <h3>📚 Available Books</h3>
+        <ul class="books-grid">
+            {% for book in books %}
+                <li class="book-card">
+                    <span class="book-title">{{ book.title }}</span>
+                    <span class="book-author">by {{ book.author }}</span>
+
+                    {% if book.available %}
+                        <span class="status-badge available-badge">Available</span>
+                        <a href="{% url 'borrow_book' book.id %}" class="action-btn borrow-btn">Borrow</a>
+                    {% else %}
+                        <span class="status-badge unavailable-badge">Not Available</span>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li class="empty-state">No books found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Borrowed Books Section -->
+    <div class="section">
+        <h3>📖 Your Borrowed Books</h3>
+        <ul class="books-grid">
+            {% for record in records %}
+                <li class="book-card">
+                    <span class="book-title">{{ record.book.title }}</span>
+                    <span class="book-author">by {{ record.book.author }}</span>
+                    <span class="book-date">Borrowed on {{ record.borrow_date|date:'M d, Y' }}</span>
+
+                    {% if record.return_date %}
+                        <span class="status-badge returned-badge">Returned</span>
+                        <span class="book-date">Returned on {{ record.return_date|date:'M d, Y' }}</span>
+                    {% else %}
+                        <a href="{% url 'return_book' record.id %}" class="action-btn return-btn">Return</a>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li class="empty-state">You haven’t borrowed any books yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

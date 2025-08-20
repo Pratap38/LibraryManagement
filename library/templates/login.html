@@ -1,0 +1,40 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Login</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body>
+
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Library Login</h2>
+
+        <p>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
+        </p>
+
+        <p>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+        </p>
+
+        <p>
+            <label for="role">Login as</label>
+            <select id="role" name="role" required>
+                <option value="student">Student</option>
+                <option value="admin">Admin</option>
+            </select>
+        </p>
+
+        <button type="submit">Login</button>
+
+       
+    </form>
+
+</body>
+</html>

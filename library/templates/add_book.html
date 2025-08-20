@@ -1,0 +1,21 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+<link rel="stylesheet" href="{% static 'addbook.css' %}">
+  <title>Add Student</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <form method="POST">
+    {% csrf_token %}
+    <h2>Add Student</h2>
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

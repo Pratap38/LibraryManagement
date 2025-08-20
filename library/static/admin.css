@@ -1,0 +1,145 @@
+/* Admin Dashboard CSS - Matching Library Theme */
+body {
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="20" font-family="Arial" font-size="10" fill="rgba(0,150,136,0.1)">📚</text></svg>');
+}
+
+h2 {
+    color: #00796b;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #00796b;
+    display: inline-block;
+}
+
+h3 {
+    color: #00695c;
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid #00796b;
+}
+
+/* Navigation Links */
+a {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    margin: 0 0.5rem 1rem 0;
+    background-color: #00796b;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 121, 107, 0.2);
+}
+
+a:hover {
+    background-color: #00695c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 121, 107, 0.3);
+}
+
+/* Lists Styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+li {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 121, 107, 0.1);
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 121, 107, 0.2);
+}
+
+li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #00796b;
+}
+
+/* Status Indicators */
+li:contains("Available")::after {
+    content: "✓";
+    color: #2e7d32;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+}
+
+li:contains("Not Available")::after {
+    content: "✗";
+    color: #c62828;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+}
+
+/* Dashboard Container */
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 121, 107, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    ul {
+        grid-template-columns: 1fr;
+    }
+    
+    a {
+        display: block;
+        margin: 0 0 1rem 0;
+        text-align: center;
+    }
+    
+    .content {
+        padding: 1.5rem;
+    }
+}
+
+/* Section Styling */
+.section {
+    margin-bottom: 3rem;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+/* Utility Classes */
+.text-muted {
+    color: #757575;
+    font-size: 0.9rem;
+}

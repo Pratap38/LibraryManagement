@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'admin.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h2>📚 Library Admin Dashboard</h2>
+
+    <!-- Navigation -->
+    <nav class="admin-nav">
+        <a href="{% url 'admin_dashboard' %}">Dashboard</a>
+        <a href="{% url 'add_book' %}">Add Book</a>
+        <a href="{% url 'add_student' %}">Add Student</a>
+        <a href="{% url 'report' %}">Reports</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+
+    <!-- Books Section -->
+    <div class="section">
+        <h3>📖 Books</h3>
+        <ul class="list">
+            {% for book in books %}
+                <li class="{% if book.available %}available{% else %}not-available{% endif %}">
+                    {{ book.title }} <span class="text-muted">by {{ book.author }}</span>
+                </li>
+            {% empty %}
+                <li>No books available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Students Section -->
+    <div class="section">
+        <h3>👤 Students</h3>
+        <ul class="list">
+            {% for student in students %}
+                <li>
+                    {{ student.name }} - {{ student.status }}
+                    <span class="text-muted">Registered: {{ student.created_at|date:"M d, Y" }}</span>
+                </li>
+            {% empty %}
+                <li>No students found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Transactions Section -->
+    <div class="section">
+        <h3>💳 Transactions</h3>
+        <ul class="list">
+            {% for txn in transactions %}
+                <li>
+                    Txn #{{ txn.id }} - {{ txn.status }}
+                    <span class="text-muted">{{ txn.date|date:"d M Y" }}</span>
+                </li>
+            {% empty %}
+                <li>No transactions yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
