@@ -26,7 +26,7 @@ A **Django-based Library Management System** with separate **Admin** and **Stude
 ## ⚙️ Tech Stack  
 - **Backend:** Django (Python) 🐍  
 - **Frontend:** HTML, CSS 🎨  
-- **Database:** SQLite (default) / MySQL / PostgreSQL supported  
+- **Database:** SQLite (default) /Admin pannel 
 - **Auth:** Django Authentication System  
 
 ---
